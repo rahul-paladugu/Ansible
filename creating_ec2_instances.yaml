@@ -1,5 +1,5 @@
 - name: creating ec2 instance
-  hosts: localhost
+  hosts: local
   connection: local
   become: true
   vars:
