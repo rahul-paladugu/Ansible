@@ -1,4 +1,4 @@
-- name: creating ec2-instances
+- name: creating ec2 instance
   hosts: localhost
   connection: local
   become: true
