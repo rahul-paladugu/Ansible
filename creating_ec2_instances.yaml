@@ -6,9 +6,9 @@
     ami_id: ami-09c813fb71547fc4f
     sg_id: sg-093f7b0430f683d14
     tier: t3.micro
-  instances:
-    - mongodb
-    - rabbitmq
+    instances:
+      - mongodb
+      - rabbitmq
   tasks:
     - name: create 2 instances
       amazon.aws.ec2_instance:
