@@ -1,0 +1,22 @@
+- name: creating ec2-instances
+  hosts: localhost
+  connection: local
+  become: true
+  vars:
+    ami_id: ami-09c813fb71547fc4f
+    sg_id: sg-093f7b0430f683d14
+    tier: t3.micro
+  instances:
+    - mongodb
+    - rabbitmq
+  tasks:
+    - name: create 2 instances
+      amazon.aws.ec2_instance:
+        image_id: "{{ ami_id }}"
+        security_group: "{{ sg_id }}"
+        instance_type: "{{ tier }}"
+        region: us-east-1
+        tags:
+         - name: "{{ item }}"
+      loop: "{{ instances }}"
+      register: ec2_output
