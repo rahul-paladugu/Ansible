@@ -10,7 +10,7 @@
       - mongodb
       - rabbitmq
   tasks:
-    - name: create 2 instances
+    - name: create 2 instance
       amazon.aws.ec2_instance:
         name: "{{ item }}"
         image_id: "{{ ami_id }}"
