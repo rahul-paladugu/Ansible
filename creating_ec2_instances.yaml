@@ -16,7 +16,6 @@
         image_id: "{{ ami_id }}"
         security_group: "{{ sg_id }}"
         instance_type: "{{ tier }}"
-        region: us-east-1
         tags:
           Name: "{{ item }}"
       loop: "{{ instances }}"
