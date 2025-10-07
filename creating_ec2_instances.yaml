@@ -1,4 +1,4 @@
-- name: creating ec2 instance
+- name: creating ec2
   hosts: local
   connection: local
   become: true
@@ -18,6 +18,6 @@
         instance_type: "{{ tier }}"
         region: us-east-1
         tags:
-         - name: "{{ item }}"
+          Name: "{{ item }}"
       loop: "{{ instances }}"
       register: ec2_output
