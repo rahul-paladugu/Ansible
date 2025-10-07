@@ -13,6 +13,7 @@
     - name: create 2 instance
       amazon.aws.ec2_instance:
         name: "{{ item }}"
+        region: us-east-1
         image_id: "{{ ami_id }}"
         security_group: "{{ sg_id }}"
         instance_type: "{{ tier }}"
