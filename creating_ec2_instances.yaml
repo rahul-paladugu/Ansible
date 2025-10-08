@@ -1,36 +1,36 @@
-- name: create ec2 and r53
+- name: creating ec2_instance using ansible
   hosts: local
   connection: local
   vars:
-    ami_id: ami-09c813fb71547fc4f
-    sg_id: sg-093f7b0430f683d14 # replace with your SG ID
-    instances: 
-    - mongodb
-    - redis
-    - mysql
-    - rabbitmq
+    sg_id:
+    ami_id:
+    zone:
+    zone_id:
+    instances:
+      - mongodb
+      - redis
   tasks:
-  - name: create ec2 instance
-    amazon.aws.ec2_instance:
-      name: "{{ item }}"
-      instance_type: t3.micro
-      security_group: "{{ sg_id }}"
-      image_id: "{{ ami_id }}"
-      tags:
-        Name: "{{ item }}"
-    loop: "{{ instances }}"
-    register: ec2_output
+    - name: create instance
+      amazon.aws.ec2_instance:
+        name: "{{ item }}"
+        image_id: "{{ ami_id }}"
+        security_group: "{{ sg_id }}"
+        instance_type: t3.micro
+        tags:
+          Name: "{{ item }}"     
+        loop: "{{ instances }}"
+        register: ec2_output
+    
+    - name: print ec2_output
+      ansible.builtin.debug:
+        msg: "{{ ec2_output }}"
 
-  - name: print the ec2_output
-    ansible.builtin.debug:
-      msg: "{{ ec2_output }}"
-
-  # - name: print public_ip
-  #   ansible.builtin.debug: 
-  #     msg: "{{ item.instances[0].public_ip_address }}"
-  #   loop: "{{ ec2_output.results }}"
-
-  # - name: print private_ip
-  #   ansible.builtin.debug: 
-  #     msg: "{{ item.instances[0].private_ip_address }}"
-  #   loop: "{{ ec2_output.results }}"
+    - name: create route53 records
+      amazon.aws.route53:
+        state: present
+        zone: "{{ zone_id }}"
+        record: "{{ item.item }}.{{ zone_id }}"
+        type: A
+        ttl: 1
+        overwrite: true
+      loop: "{{ ec2_output.results }}"
