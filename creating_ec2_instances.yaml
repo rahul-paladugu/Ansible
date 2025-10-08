@@ -2,10 +2,10 @@
   hosts: local
   connection: local
   vars:
-    sg_id:
-    ami_id:
-    zone:
-    zone_id:
+    sg_id: sg-093f7b0430f683d14
+    ami_id: ami-09c813fb71547fc4f
+    hosted_zone: rscloudservices.icu
+    hosted_zone_id: Z0711084A6IKM873A3LI
     instances:
       - mongodb
       - redis
@@ -28,7 +28,8 @@
     - name: create route53 records
       amazon.aws.route53:
         state: present
-        zone: "{{ zone_id }}"
+        zone_id: "{{ hosted_zone_id }}"
+        zone: "{{ hosted_zone }}"
         record: "{{ item.item }}.{{ zone_id }}"
         type: A
         ttl: 1
