@@ -2,8 +2,8 @@
   hosts: local
   connection: local
   vars:
-    - sg_id:
-    - ami_id:
+    - sg_id: sg-093f7b0430f683d14
+    - ami_id: ami-09c813fb71547fc4f
   instances:
     - mongodb
     - rabbitmq
