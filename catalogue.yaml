@@ -58,5 +58,4 @@
        daemon-reload: true
 
    - name: load schemas into mongodb
-     ansible.builtin.command:
-       cmd: mongosh --host mongodb.rscloudservices.icu </app/db/master-data.js
+     ansible.builtin.commandshell: mongosh --host mongodb.rscloudservices.icu </app/db/master-data.js
