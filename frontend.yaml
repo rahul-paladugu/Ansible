@@ -5,13 +5,12 @@
    - name: remove default nginx
      ansible.builtin.command: dnf module disable nginx -y
 
-   - name: enable required version of nginx
-     ansible.builtin.command: dnf module enable nginx:1:24 -y
-
    - name: install nginx
      ansible.builtin.dnf:
        name: nginx
        state: present
+       vars:
+         nginx_version: "1.24.0"
 
    - name: remove html default content
      ansible.builtin.file:
