@@ -43,8 +43,8 @@
      ansible.builtin.systemd:
        daemon_reload: yes
 
-   - name: start and enable redis
+   - name: start and enable user
      ansible.builtin.service:
        name: user
-       status: started
+       state: started
        enabled: yes
