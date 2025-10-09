@@ -45,8 +45,8 @@
 
    - name: create user service
      ansible.builtin.copy:
-       src: user.service
-       dest: /etc/systemd/system/user.service
+       src: dispatch.service
+       dest: /etc/systemd/system/dispatch.service
 
    - name: daemon reload
      ansible.builtin.systemd:
@@ -54,6 +54,6 @@
 
    - name: start and enable user
      ansible.builtin.service:
-       name: user
+       name: dispatch
        state: started
        enabled: yes
