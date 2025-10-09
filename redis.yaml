@@ -28,7 +28,7 @@
    - name: daemon reload
      ansible.builtin.service:
        name: redis
-       daemon-reload: yes
+       daemon_reload: yes
 
    - name: start and enable redis
      ansible.builtin.service:
