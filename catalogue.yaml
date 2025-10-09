@@ -33,7 +33,7 @@
    - name: Download and unzip a file
      ansible.builtin.unarchive:
       src: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
-      dest: /app/catalogue-v3
+      dest: /app/
       remote_src: yes   
 
    - name: create app directory
