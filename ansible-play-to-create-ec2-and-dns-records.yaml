@@ -1,4 +1,4 @@
-- name: ansible play to create ec2 instances and dns records
+- name: ansible play to create ec instances and dns records
   hosts: local
   connection: local
   vars:
