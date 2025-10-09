@@ -42,6 +42,6 @@
    - name: daemon reload
      ansible.builtin.service:
        name: user
-       daemon-reload: yes
+       daemon_reload: yes
        status: started
        enabled: yes
