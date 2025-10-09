@@ -26,3 +26,22 @@
       ansible.builtin.debug:
         msg: "{{ item.private_ip_address }}"
       loop: "{{ ec2_output.results | map(attribute='instances') | flatten }}"
+    - name: create dns records for private_ips
+      amazon.aws.route53:
+        state: present
+        zone: rscloudservices.icu
+        record: "{{ item.}}.rscloudservices.icu"
+        type: A
+        ttl: 1
+        value: "{{ item.instances[0].private_ip_address }}"
+      loop: "{{ ec2_output.results }}"
+    - name: create dns records from frontend
+      amazon.aws.route53:
+        state: present
+        zone: rscloudservices.icu
+        record: "{{ item.}}.rscloudservices.icu"
+        type: A
+        ttl: 1
+        value: "{{ item.instances[0].public_ip_address }}"
+      when: item.item == "frontend"
+      loop: "{{ ec2_output.results }}"
