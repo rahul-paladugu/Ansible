@@ -7,8 +7,11 @@
     dns: rscloudservices.icu
     instances:
      - mongodb
-     - rabbitmq
+     - catalogue
      - frontend
+     - redis
+     - rabbitm
+     - user
   tasks:
     - name: create ec2 instances
       amazon.aws.ec2_instance:
