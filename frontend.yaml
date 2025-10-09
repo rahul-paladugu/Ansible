@@ -7,10 +7,8 @@
 
    - name: install nginx
      ansible.builtin.dnf:
-       name: nginx
+       name: nginx = 1.24
        state: present
-       vars:
-         nginx_version: "1.24.0"
 
    - name: remove html default content
      ansible.builtin.file:
