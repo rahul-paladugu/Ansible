@@ -38,11 +38,18 @@
         dest: /etc/systemd/system/shipping.service
 
 
-    - name: load mysql schemas
-      ansible.builtin.shell: mysql -h mysql.rscloudservices.icu -uroot -pRoboShop@1 < "{{ item }}"
+    - name: import shipping data into mysql
+      community.mysql.mysql_db:
+        state: import
+        name: all
+        login_host: mysql.daws86s.fun
+        login_user: root
+        login_password: RoboShop@1
+        target: "{{ item }}"
       loop:
         - /app/db/schema.sql
-        - /app/db/app-user.sql /app/db/master-data.sql
+        - /app/db/app-user.sql 
+        - /app/db/master-data.sql
 
     - name: daemon reload
       ansible.builtin.systemd:
