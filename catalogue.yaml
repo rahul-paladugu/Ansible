@@ -14,3 +14,14 @@
      ansible.builtin.dnf:
        name: nodejs
        state: present
+
+   - name: Create roboshop user with nologin
+     ansible.builtin.user:
+       name: roboshop
+       create_home: yes
+       shell: /sbin/nologin
+       comment: roboshop system user
+   - name: Recursively change ownership of a directory
+     ansible.builtin.file:
+       path: /app
+       state: directory
