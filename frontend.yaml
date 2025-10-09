@@ -21,7 +21,7 @@
    - name: create html directory to copy code
      ansible.builtin.file:
        path: /usr/share/nginx/html
-       state: presentdirectory
+       state: directory
 
    - name: Download code and unzip
      ansible.builtin.unarchive:
