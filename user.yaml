@@ -40,8 +40,11 @@
        dest: /etc/systemd/system/user.service
 
    - name: daemon reload
+     ansible.builtin.systemd:
+       daemon_reload: yes
+
+   - name: start and enable redis
      ansible.builtin.service:
        name: user
-       daemon_reload: yes
        status: started
        enabled: yes
