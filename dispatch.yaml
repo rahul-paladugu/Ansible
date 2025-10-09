@@ -25,8 +25,8 @@
        remote_src: yes
    - name: go to specific directory
      ansible.builtin.find:
-     paths: /app
-     file_type: directory  
+       paths: /app
+       file_type: directory  
 
    - name: dependencies go-mod
      ansible.builtin.shell: go mod init dispatch
