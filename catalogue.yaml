@@ -41,9 +41,8 @@
        path: /app
        state: directory
 
-   - name: remove default nodejs
-     ansible.builtin.command:
-       cmd: npm install
+   - name: install dependencies
+     ansible.builtin.command: npm install
 
    - name: copy service requirements
      ansible.builtin.copy:
