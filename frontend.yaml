@@ -3,10 +3,11 @@
   become: yes
   tasks:
    - name: remove default nginx
-     ansible.builtin.command: dnf module disable nginx -yes
+     ansible.builtin.command: dnf module disable nginx -y
+
     
    - name: enable required version of nginx
-     ansible.builtin.command: dnf module enable nginx:1:24 -yes
+     ansible.builtin.command: dnf module enable nginx:1:24 -y
 
    - name: install nginx
      ansible.builtin.dnf:
