@@ -33,7 +33,7 @@
    - name: Download and unzip a file
      ansible.builtin.unarchive:
       src: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
-      dest: /app/
+      dest: /app
       remote_src: yes   
 
    - name: create app directory
@@ -41,10 +41,11 @@
        path: /app
        state: directory
 
-   - name: install dependencies
-     ansible.builtin.command: npm install
+   - name: Install packages based on package.json
+     community.general.npm:
+       path: /app
 
-   - name: copy service requirements
+   - name: setup service
      ansible.builtin.copy:
        src: catalogue.service
        dest: /etc/systemd/system/catalogue.service
