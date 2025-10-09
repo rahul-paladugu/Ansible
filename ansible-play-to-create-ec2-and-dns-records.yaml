@@ -4,6 +4,7 @@
   vars:
     sg_id: sg-093f7b0430f683d14
     ami_id: ami-09c813fb71547fc4f
+    dns: rscloudservices.icu
     instances:
      - mongodb
      - rabbitmq
@@ -30,8 +31,8 @@
     - name: create dns records for private_ips
       amazon.aws.route53:
         state: present
-        zone: rscloudservices.icu
-        record: "{{ item.}}.rscloudservices.icu"
+        zone: "{{ dns }}"
+        record: "{{ item.}}.{{ dns }}"
         type: A
         ttl: 1
         overwrite: true
@@ -40,8 +41,8 @@
     - name: create dns records from frontend
       amazon.aws.route53:
         state: present
-        zone: rscloudservices.icu
-        record: "{{ item.}}.rscloudservices.icu"
+        zone: "{{ dns }}"
+        record: "{{ dns }}"
         type: A
         ttl: 1
         overwrite: true
