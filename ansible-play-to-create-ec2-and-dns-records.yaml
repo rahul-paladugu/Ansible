@@ -20,9 +20,9 @@
       register: ec2_output
     - name: print public_ip
       ansible.builtin.debug:
-        msg: "{{ item.instances[0].public_ip }}"
+        msg: "{{ item.instances[0].public_ip_address }}"
       loop: "{{ ec2_output.results }}"
     - name: print private.IPs
       ansible.builtin.debug:
-        msg: "{{ item.private_ip }}"
+        msg: "{{ item.private_ip_address }}"
       loop: "{{ ec2_output.results | map(attribute='instances') | flatten }}"
