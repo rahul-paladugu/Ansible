@@ -13,8 +13,8 @@
        name: nodejs
        state: present
 
-   - name: create system-cart
-     ansible.builtin.cart:
+   - name: create system-user
+     ansible.builtin.user:
        name: roboshop
        comment: roboshop system cart
        create_home: yes
