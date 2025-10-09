@@ -7,19 +7,19 @@
     instances:
       - mongodb
       - rabbitmq
-  -tasks:
-     - name: creating servers
-       amazon.aws.ec2_instance:
-         name: "{{ instances }}"
-         image_id: "{{ ami_id }}"
-         instance_type: t3.micro
-         security_groups: "{{ sg_id }}"
-         region: us-east-1
-         tags:
-           Name: "{{ item }}"
-       loop: "{{ instances }}"
-       register: ec2_instance_info
+  tasks:
+    - name: creating servers
+      amazon.aws.ec2_instance:
+        name: "{{ instances }}"
+        image_id: "{{ ami_id }}"
+        instance_type: t3.micro
+        security_groups: "{{ sg_id }}"
+        region: us-east-1
+        tags:
+          Name: "{{ item }}"
+        loop: "{{ instances }}"
+        register: ec2_instance_info
 
-     - name: register ec2_output
-       ansible.builtin.debug:
-         msg: "{{ ec2_instance_info }}"
+    - name: register ec2_output
+      ansible.builtin.debug:
+        msg: "{{ ec2_instance_info }}"
