@@ -30,8 +30,7 @@
 
    - name: Install Python requirements using pip3
      ansible.builtin.pip:
-       requirements: /app
-       state: present    
+       requirements: /app   
 
    - name: create payment service
      ansible.builtin.copy:
