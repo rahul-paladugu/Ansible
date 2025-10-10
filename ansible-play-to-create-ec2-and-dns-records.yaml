@@ -6,17 +6,17 @@
     ami_id: ami-09c813fb71547fc4f
     dns: rscloudservices.icu
     instances:
-     - mongodb
-     - catalogue
-     - frontend
-     - redis
-     - user
-     - cart
-     - mysql
+    # - mongodb
+    #- catalogue
+    # - frontend
+    # - redis
+    # - user
+    # - cart
+    # - mysql
      - shipping
-     - rabbitmq
+    # - rabbitmq
      - payment
-     - dispatch
+    # - dispatch
   tasks:
     - name: create ec2 instances
       amazon.aws.ec2_instance:
