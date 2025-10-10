@@ -30,6 +30,8 @@
 
    - name: Install Python requirements using pip3
      ansible.builtin.command: pip3 install -r requirements.txt
+     args:
+       - chdir: /app
 
    - name: create payment service
      ansible.builtin.copy:
