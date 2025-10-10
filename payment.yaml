@@ -29,8 +29,7 @@
        remote_src: yes
 
    - name: Install Python requirements using pip3
-     ansible.builtin.pip:
-       requirements: /app/requirements.txt
+     ansible.builtin.command: pip3 install -r requirements.txt
 
    - name: create payment service
      ansible.builtin.copy:
