@@ -37,6 +37,10 @@
         src: shipping.service
         dest: /etc/systemd/system/shipping.service
 
+    - name: install pymysql
+      ansible.builtin.pip:
+        name: PyMySQL
+        state: present
 
     - name: import shipping data into mysql
       community.mysql.mysql_db:
