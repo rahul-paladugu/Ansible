@@ -1,0 +1,6 @@
+- name: Sample Ansible task to print data
+  tasks:
+  - name: print information
+    ansible builtin.debug:
+      msg: "Hello, welcome to dev-practice"
+   
