@@ -1,4 +1,6 @@
 - name: Sample Ansible task to print data
+  hosts: local
+  connection: local
   tasks:
   - name: print information
     ansible.builtin.debug:
