@@ -19,7 +19,7 @@
 #Example for Variables in files
     - name: Variables in files
       vars: 
-        -vars.yaml
+        - vars.yaml
       ansible.builtin.debug:
         msg: "Deployment is scheduled in environment {{ env }}. Downtime required is {{ downtime }}"
 
