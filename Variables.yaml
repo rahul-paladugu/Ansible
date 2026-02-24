@@ -4,7 +4,16 @@
   vars:
     course: Devops
     tools: Ansible
+#Example for play leve variables
   tasks: 
     - name: Play level Variables
       ansible.builtin.debug:
         msg: "Learning the course: {{ course }} and tool currently learning is {{ tools }}"
+#Example for task level variables
+    - name: Task level Variables
+      vars: 
+        env: production
+        downtime: 5 hours
+      ansible.builtin.debug:
+        msg: "Deployment is scheduled in environment {{ env }}. Downtime required is {{ downtime }}"
+
