@@ -1,0 +1,10 @@
+- name: Variables
+  hosts: local
+  connection: local
+  vars:
+    course: Devops
+    tools: Ansible
+  tasks: 
+    - name: Play level Variables
+      ansible.builtin.debug:
+        msg: "Learning the course: {{ course }} and tool currently learning is {{ tools }}"
