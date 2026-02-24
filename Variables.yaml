@@ -18,7 +18,7 @@
         msg: "Deployment is scheduled in environment {{ env }}. Downtime required is {{ downtime }}"
 #Example for Variables in files
     - name: Variables in files
-      vars: 
+      vars_files: 
         - vars.yaml
       ansible.builtin.debug:
         msg: "Deployment is scheduled in environment {{ env }}. Downtime required is {{ downtime }}"
