@@ -1,0 +1,8 @@
+- name: Gathering Facts
+  hosts: local
+  connection: local
+#Gathering Facts is nothing but collection information from the server, where ansible is going to perform tasks
+  tasks:
+  - name: Facts Check
+    ansible.builtin.debug:
+      msg: "{{ ansible_facts }}"
