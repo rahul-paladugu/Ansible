@@ -1,0 +1,13 @@
+- name: Maps in Loops
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: Install packages
+    ansible.builtin.dnf:
+     name: "{{ item.name }}"
+     state: "{{ item.state }}"
+    loop:
+    - {name: nginx, State: absent}
+    - {name: mysql, State: absent}
+    - {name: zip, State: latest}
