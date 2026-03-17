@@ -22,4 +22,5 @@
     - name: Variables in files
       ansible.builtin.debug:
         msg: "Deployment is scheduled in environment {{ env }}. Downtime required is {{ duration }}"
+        
 
